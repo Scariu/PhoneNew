@@ -9,11 +9,9 @@ import com.example.phonenew.data.remote.CellPhone
 import com.example.phonenew.data.remote.CellPhoneAPI
 
 class Repository(private val cellPhoneAPI: CellPhoneAPI, private val cellPhoneDAO: CellPhoneDAO) {
+    fun getCellPhonesFromEntity(): LiveData<List<CellPhoneEntity>> =
+        cellPhoneDAO.getCellPhones()
     suspend fun getCellPhones() {
-
-        fun getCellPhonesFromEntity(): LiveData<List<CellPhoneEntity>> =
-            cellPhoneDAO.getCellPhones()
-
         try {
             val response = cellPhoneAPI.getDataCellPhone() // Aqui llegan los datos
             if (response.isSuccessful) { //Evalua si llegaron los datos

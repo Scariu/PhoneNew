@@ -18,6 +18,16 @@ class FirstFragmentList : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentFirstListBinding.inflate(layoutInflater)
+        initAdapter()
         return binding.root
+    }
+
+    private fun initAdapter() {
+        viewModel.getCellPhonesViewModel()
+        val adapter = AdapterList()
+        binding.recyclerViewList.adapter = adapter
+        viewModel.cellPhonesLiveData().observe(viewLifecycleOwner) {
+            adapter.setData(it)
+        }
     }
 }

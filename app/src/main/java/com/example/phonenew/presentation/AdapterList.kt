@@ -24,6 +24,11 @@ class AdapterList : RecyclerView.Adapter<AdapterList.ViewHolder>() {
     override fun getItemCount(): Int {
         return listOfCellPhones.size
     }
+    fun setData(cellPhones: List<CellPhoneEntity>){
+        this.listOfCellPhones.clear()
+        this.listOfCellPhones.addAll(cellPhones)
+        notifyDataSetChanged()
+    }
 
     class ViewHolder(private val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(cellPhone: CellPhoneEntity) {
