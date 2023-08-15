@@ -5,5 +5,5 @@ import retrofit2.http.GET
 
 interface CellPhoneAPI {
     @GET("products/")
-    suspend fun getDataCellPhone(): Response<CellPhone>
+    suspend fun getDataCellPhone(): Response<List<CellPhone>>
 }
