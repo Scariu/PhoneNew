@@ -9,5 +9,14 @@
         android:id="@+id/firstFragmentList"
         android:name="com.example.phonenew.presentation.FirstFragmentList"
         android:label="fragment_first_list"
-        tools:layout="@layout/fragment_first_list" />
+        tools:layout="@layout/fragment_first_list" >
+        <action
+            android:id="@+id/action_firstFragmentList_to_secondFragmentDetail"
+            app:destination="@id/secondFragmentDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondFragmentDetail"
+        android:name="com.example.phonenew.presentation.SecondFragmentDetail"
+        android:label="fragment_second_detail"
+        tools:layout="@layout/fragment_second_detail" />
 </navigation>

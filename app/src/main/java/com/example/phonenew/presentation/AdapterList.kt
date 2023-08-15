@@ -2,8 +2,10 @@ package com.example.phonenew.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.phonenew.R
 import com.example.phonenew.data.local.list.CellPhoneEntity
 import com.example.phonenew.databinding.ItemBinding
 
@@ -35,6 +37,9 @@ class AdapterList : RecyclerView.Adapter<AdapterList.ViewHolder>() {
             binding.imageItem.load(cellPhone.image)
             binding.tvNameItem.text = cellPhone.name
             binding.tvPriceItem.text = cellPhone.price.toString()
+            binding.cvItem.setOnClickListener{
+                Navigation.findNavController(binding.root).navigate(R.id.action_firstFragmentList_to_secondFragmentDetail)
+            }
         }
     }
 }
