@@ -1,4 +1,4 @@
-package com.example.phonenew.data.remote
+package com.example.phonenew.data.remote.list
 
 data class CellPhone(
     val id: Long,

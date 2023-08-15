@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.phonenew.data.local.CellPhoneEntity
+import com.example.phonenew.data.local.list.CellPhoneEntity
 import com.example.phonenew.databinding.ItemBinding
 
 class AdapterList : RecyclerView.Adapter<AdapterList.ViewHolder>() {

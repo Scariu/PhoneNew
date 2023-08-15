@@ -4,8 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.phonenew.data.local.detail.CellPhoneDetailEntity
+import com.example.phonenew.data.local.list.CellPhoneEntity
 
-@Database(entities = [CellPhoneEntity::class], version = 1)
+@Database(entities = [CellPhoneEntity::class, CellPhoneDetailEntity::class], version = 1)
 abstract class CellPhoneDataBase : RoomDatabase() {
 
     abstract fun getCellPhonesDAO(): CellPhoneDAO

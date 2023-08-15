@@ -3,8 +3,8 @@ package com.example.phonenew.data
 import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.phonenew.data.local.CellPhoneDAO
-import com.example.phonenew.data.local.CellPhoneEntity
-import com.example.phonenew.data.remote.CellPhone
+import com.example.phonenew.data.local.list.CellPhoneEntity
+import com.example.phonenew.data.remote.list.CellPhone
 
 import com.example.phonenew.data.remote.CellPhoneAPI
 

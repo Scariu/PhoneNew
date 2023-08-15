@@ -1,9 +1,9 @@
-package com.example.phonenew.data.local
+package com.example.phonenew.data.local.list
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "tabla_cell_phones")
+@Entity(tableName = "table_cell_phones")
 data class CellPhoneEntity(
     @PrimaryKey val id: Long,
     val name: String,
