@@ -1,5 +1,6 @@
 package com.example.phonenew.presentation
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
@@ -36,9 +37,11 @@ class AdapterList : RecyclerView.Adapter<AdapterList.ViewHolder>() {
         fun bind(cellPhone: CellPhoneEntity) {
             binding.imageItem.load(cellPhone.image)
             binding.tvNameItem.text = cellPhone.name
-            binding.tvPriceItem.text = cellPhone.price.toString()
+            binding.tvPriceItem.text = "$ ${cellPhone.price}"
             binding.cvItem.setOnClickListener{
-                Navigation.findNavController(binding.root).navigate(R.id.action_firstFragmentList_to_secondFragmentDetail)
+                val bundle = Bundle()
+                bundle.putString("id", cellPhone.id.toString())
+                Navigation.findNavController(binding.root).navigate(R.id.action_firstFragmentList_to_secondFragmentDetail, bundle)
             }
         }
     }

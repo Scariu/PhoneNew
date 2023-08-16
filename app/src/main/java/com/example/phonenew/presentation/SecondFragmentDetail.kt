@@ -6,22 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import com.example.phonenew.R
+import coil.load
 import com.example.phonenew.databinding.FragmentSecondDetailBinding
 
 
-private const val ARG_PARAM1 = "param1"
-
 class SecondFragmentDetail : Fragment() {
-lateinit var binding: FragmentSecondDetailBinding
-private val viewModel: CellPhoneViewModel by activityViewModels()
+    lateinit var binding: FragmentSecondDetailBinding
+    private val viewModel: CellPhoneViewModel by activityViewModels()
 
-    private var param1: String? = null
+    private var paramId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
+            paramId = it.getString("id")
         }
     }
 
@@ -29,7 +27,27 @@ private val viewModel: CellPhoneViewModel by activityViewModels()
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentSecondDetailBinding.inflate(layoutInflater)
+        initComponents()
+        return binding.root
+    }
 
-        return inflater.inflate(R.layout.fragment_second_detail, container, false)
+    private fun initComponents() {
+        viewModel.getCellPhoneDetailsViewModel(paramId.toString().toLong())
+        viewModel.cellPhoneDetailsLiveData(paramId.toString().toLong())
+            .observe(viewLifecycleOwner) {
+                if (it != null) {
+                    binding.imageDetail.load(it.image)
+                    binding.tvDetailName.text = it.name
+                    binding.tvDetailPrice.text = "$ ${it.price}"
+                    binding.tvDetailDescription.text = it.description
+                    binding.tvDetailLastPrice.text = "$ ${it.lastPrice}"
+                    if (!it.credit) {
+                        binding.tvDetailCredit.text = "EFECTIVO"
+                    } else {
+                        binding.tvDetailCredit.text = "CREDITO"
+                    }
+                }
+            }
     }
 }
