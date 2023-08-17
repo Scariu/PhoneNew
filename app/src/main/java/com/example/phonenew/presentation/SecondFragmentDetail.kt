@@ -32,24 +32,27 @@ class SecondFragmentDetail : Fragment() {
     ): View? {
         binding = FragmentSecondDetailBinding.inflate(layoutInflater)
         initComponents()
+        initListeners()
         return binding.root
     }
 
     private fun initListeners() {
         viewModel.cellPhoneDetailsLiveData(paramId.toString().toLong())
             .observe(viewLifecycleOwner) {
-                val asunto = "Consulta ${it.name} id ${it.id}"
-                val message =
-                    "Hola, \nVi la propiedad ${it.name} de código ${it.id} y me gustaría que me contactaran a este correo o al siguiente número ____________. \nQuedo atento."
+                if (it != null) {
+                    val asunto = "Consulta ${it.name} id ${it.id}"
+                    val message =
+                        "Hola, \nVi la propiedad ${it.name} de código ${it.id} y me gustaría que me contactaran a este correo o al siguiente número ____________. \nQuedo atento."
 
-                binding.floatingBtnMail.setOnClickListener {
-                    val mail = "info@novaera.cl"
-                    val intentMail = Intent(ACTION_SEND, Uri.parse(mail))
-                    intentMail.type = "text/plain"
-                    intentMail.putExtra(Intent.EXTRA_EMAIL, arrayOf(mail))
-                    intentMail.putExtra(Intent.EXTRA_SUBJECT, asunto)
-                    intentMail.putExtra(Intent.EXTRA_TEXT, message)
-                    startActivity(Intent.createChooser(intentMail, "Send Mail"))
+                    binding.floatingBtnMail.setOnClickListener {
+                        val mail = "info@novaera.cl"
+                        val intentMail = Intent(ACTION_SEND, Uri.parse(mail))
+                        intentMail.type = "text/plain"
+                        intentMail.putExtra(Intent.EXTRA_EMAIL, arrayOf(mail))
+                        intentMail.putExtra(Intent.EXTRA_SUBJECT, asunto)
+                        intentMail.putExtra(Intent.EXTRA_TEXT, message)
+                        startActivity(Intent.createChooser(intentMail, "Send Mail"))
+                    }
                 }
             }
     }
@@ -71,6 +74,5 @@ class SecondFragmentDetail : Fragment() {
                     }
                 }
             }
-        initListeners()
     }
 }
