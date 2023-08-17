@@ -68,9 +68,9 @@ class SecondFragmentDetail : Fragment() {
                     binding.tvDetailDescription.text = "DESCRIPCIÓN \n\n ${it.description}"
                     binding.tvDetailLastPrice.text = "ANTES $ ${it.lastPrice}"
                     if (!it.credit) {
-                        binding.tvDetailCredit.text = "EFECTIVO"
+                        binding.tvDetailCredit.text = "Sólo efectivo"
                     } else {
-                        binding.tvDetailCredit.text = "CREDITO"
+                        binding.tvDetailCredit.text = "Acepta Crédito"
                     }
                 }
             }

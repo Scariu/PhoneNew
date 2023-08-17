@@ -27,7 +27,8 @@ class AdapterList : RecyclerView.Adapter<AdapterList.ViewHolder>() {
     override fun getItemCount(): Int {
         return listOfCellPhones.size
     }
-    fun setData(cellPhones: List<CellPhoneEntity>){
+
+    fun setData(cellPhones: List<CellPhoneEntity>) {
         this.listOfCellPhones.clear()
         this.listOfCellPhones.addAll(cellPhones)
         notifyDataSetChanged()
@@ -35,13 +36,17 @@ class AdapterList : RecyclerView.Adapter<AdapterList.ViewHolder>() {
 
     class ViewHolder(private val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(cellPhone: CellPhoneEntity) {
-            binding.imageItem.load(cellPhone.image)
+            binding.imageItem.load(cellPhone.image) {
+                placeholder(R.drawable.loading)
+                error(R.drawable.image_not_available)
+            }
             binding.tvNameItem.text = cellPhone.name
             binding.tvPriceItem.text = "$ ${cellPhone.price}"
-            binding.cvItem.setOnClickListener{
+            binding.cvItem.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString("id", cellPhone.id.toString())
-                Navigation.findNavController(binding.root).navigate(R.id.action_firstFragmentList_to_secondFragmentDetail, bundle)
+                Navigation.findNavController(binding.root)
+                    .navigate(R.id.action_firstFragmentList_to_secondFragmentDetail, bundle)
             }
         }
     }
