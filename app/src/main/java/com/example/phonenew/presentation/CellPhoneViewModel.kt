@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class CellPhoneViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: Repository
     fun cellPhonesLiveData() = repository.getCellPhonesFromEntity()
-    fun cellPhoneDetailsLiveData(id: Long) = repository.getCellPhoneDEtailsFromEntity(id)
+    fun cellPhoneDetailsLiveData(id: Long) = repository.getCellPhoneDetailsFromEntity(id)
 
     init {
         val api = CellPhoneRetrofit.getCellPhoneRetrofit()

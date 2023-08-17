@@ -14,7 +14,7 @@ class Repository(private val cellPhoneAPI: CellPhoneAPI, private val cellPhoneDA
     fun getCellPhonesFromEntity(): LiveData<List<CellPhoneEntity>> =
         cellPhoneDAO.getCellPhones()
 
-    fun getCellPhoneDEtailsFromEntity(id: Long): LiveData<CellPhoneDetailEntity> =
+    fun getCellPhoneDetailsFromEntity(id: Long): LiveData<CellPhoneDetailEntity> =
         cellPhoneDAO.getCellPhoneDetails(id)
 
     suspend fun getCellPhones() {
@@ -38,7 +38,7 @@ class Repository(private val cellPhoneAPI: CellPhoneAPI, private val cellPhoneDA
             if (response.isSuccessful) { //Evalua si llegaron los datos
                 val resp = response.body() // Solo obtiene la respuesta, no tiene status
                 resp?.let {
-                    val cellPhoneDetailEntity = it.transformToDEtailEntity(id)
+                    val cellPhoneDetailEntity = it.transformToDetailEntity()
                     cellPhoneDAO.insertCellPhoneDetails(cellPhoneDetailEntity)
                 }
             }
@@ -51,7 +51,7 @@ class Repository(private val cellPhoneAPI: CellPhoneAPI, private val cellPhoneDA
 fun CellPhone.transformToEntity(): CellPhoneEntity =
     CellPhoneEntity(this.id, this.name, this.price, this.image)
 
-fun CellPhoneDetail.transformToDEtailEntity(id: Long): CellPhoneDetailEntity =
+fun CellPhoneDetail.transformToDetailEntity(): CellPhoneDetailEntity =
     CellPhoneDetailEntity(
         this.id,
         this.name,

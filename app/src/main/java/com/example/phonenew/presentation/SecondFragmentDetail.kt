@@ -32,7 +32,6 @@ class SecondFragmentDetail : Fragment() {
     ): View? {
         binding = FragmentSecondDetailBinding.inflate(layoutInflater)
         initComponents()
-        initListeners()
         return binding.root
     }
 
@@ -72,6 +71,6 @@ class SecondFragmentDetail : Fragment() {
                     }
                 }
             }
+        initListeners()
     }
 }
-
