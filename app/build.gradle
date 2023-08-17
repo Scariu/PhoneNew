@@ -37,6 +37,8 @@ android {
 }
 
 dependencies {
+    testImplementation 'junit:junit:4.12'
+
 
     //Room
     def room_version = "2.5.2"

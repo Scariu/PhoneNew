@@ -48,16 +48,3 @@ class Repository(private val cellPhoneAPI: CellPhoneAPI, private val cellPhoneDA
     }
 }
 
-fun CellPhone.transformToEntity(): CellPhoneEntity =
-    CellPhoneEntity(this.id, this.name, this.price, this.image)
-
-fun CellPhoneDetail.transformToDetailEntity(): CellPhoneDetailEntity =
-    CellPhoneDetailEntity(
-        this.id,
-        this.name,
-        this.price,
-        this.image,
-        this.description,
-        this.lastPrice,
-        this.credit
-    )
