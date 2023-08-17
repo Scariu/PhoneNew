@@ -62,7 +62,7 @@ class SecondFragmentDetail : Fragment() {
                     binding.imageDetail.load(it.image)
                     binding.tvDetailName.text = it.name
                     binding.tvDetailPrice.text = "AHORA $ ${it.price}"
-                    binding.tvDetailDescription.text = "DESCRIPCIÓN \n ${it.description}"
+                    binding.tvDetailDescription.text = "DESCRIPCIÓN \n\n ${it.description}"
                     binding.tvDetailLastPrice.text = "ANTES $ ${it.lastPrice}"
                     if (!it.credit) {
                         binding.tvDetailCredit.text = "EFECTIVO"
