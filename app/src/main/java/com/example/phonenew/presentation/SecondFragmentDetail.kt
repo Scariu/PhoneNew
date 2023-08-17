@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import coil.load
+import com.example.phonenew.R
 import com.example.phonenew.databinding.FragmentSecondDetailBinding
 
 
@@ -62,10 +63,13 @@ class SecondFragmentDetail : Fragment() {
         viewModel.cellPhoneDetailsLiveData(paramId.toString().toLong())
             .observe(viewLifecycleOwner) {
                 if (it != null) {
-                    binding.imageDetail.load(it.image)
+                    binding.imageDetail.load(it.image){
+                        placeholder(R.drawable.loading)
+                        error(R.drawable.image_not_available)
+                    }
                     binding.tvDetailName.text = it.name
                     binding.tvDetailPrice.text = "AHORA $ ${it.price}"
-                    binding.tvDetailDescription.text = "DESCRIPCIÓN \n\n ${it.description}"
+                    binding.tvDetailDescription.text = "DESCRIPCIÓN \n ${it.description}"
                     binding.tvDetailLastPrice.text = "ANTES $ ${it.lastPrice}"
                     if (!it.credit) {
                         binding.tvDetailCredit.text = "Sólo efectivo"
