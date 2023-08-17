@@ -37,8 +37,14 @@ android {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.12'
 
+    //AndroidTesting
+    androidTestImplementation "androidx.arch.core:core-testing:2.2.0"
+    androidTestImplementation "androidx.room:room-testing:2.5.2"
+    androidTestImplementation 'androidx.test.ext:truth:1.5.0'
+
+    //TestUnit
+    testImplementation 'junit:junit:4.12'
 
     //Room
     def room_version = "2.5.2"
