@@ -4,6 +4,8 @@
     <string name="phone_title">PHONE NEW</string>
     <string name="name">PHONE NEW</string>
     <string name="price">AHORA $ 0</string>
+    <string name="price_list">$ 0</string>
+    <string name="phone_list">Modelo</string>
     <string name="description">DESCRIPCIÓN</string>
     <string name="last_price">ANTES $ 0</string>
     <string name="credit">TIPO DE PAGO</string>x
