@@ -69,7 +69,7 @@ class SecondFragmentDetail : Fragment() {
                     }
                     binding.tvDetailName.text = it.name
                     binding.tvDetailPrice.text = "AHORA $ ${it.price}"
-                    binding.tvDetailDescription.text = "DESCRIPCIÓN \n ${it.description}"
+                    binding.tvDetailDescription.text = it.description
                     binding.tvDetailLastPrice.text = "ANTES $ ${it.lastPrice}"
                     if (!it.credit) {
                         binding.tvDetailCredit.text = "Sólo efectivo"
